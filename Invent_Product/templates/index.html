@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Inventario</title>
+
+  <!-- Cargar los archivos estáticos -->
+  {% load static %}  <!-- Aquí cargamos las etiquetas estáticas -->
+
+  <!-- Enlace a tu archivo de CSS -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  
+  <!-- FontAwesome para los íconos -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <header>
+    <div class="container">
+      <h1>Gestor de Inventario</h1>
+    </div>
+  </header>
+
+  <!-- Sección de Búsqueda y Filtro -->
+  <section id="searchSection">
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Buscar producto..." oninput="searchProducts()">
+      <button class="btn" onclick="searchProducts()">Buscar</button>
+
+      <!-- Categoría como texto clicable -->
+      <div id="categoryText" class="category-text" onclick="toggleCategoryDropdown()">Categoría</div>
+
+      <!-- Menú de Categorías -->
+      <div id="categoryDropdown" class="category-dropdown hidden">
+        <div class="dropdown-item" onclick="filterByCategory('electronics')">Electrónica</div>
+        <div class="dropdown-item" onclick="filterByCategory('clothing')">Ropa</div>
+        <div class="dropdown-item" onclick="filterByCategory('food')">Alimentos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Productos -->
+  <section id="productSection">
+    <h2>Productos de la Categoría: <span id="currentCategory">Selecciona una categoría</span></h2>
+    <div id="productList">
+      <!-- Los productos serán renderizados aquí dinámicamente -->
+    </div>
+  </section>
+
+  <!-- Modal para Añadir o Actualizar Producto -->
+  <div id="productModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modalTitle">Añadir Producto</h2>
+      <form id="productForm">
+        <label for="productName">Nombre del Producto:</label>
+        <input type="text" id="productName" required>
+
+        <label for="productCode">Código:</label>
+        <input type="text" id="productCode" required>
+
+        <label for="productCategory">Categoría:</label>
+        <input type="text" id="productCategory" value="" readonly>
+
+        <label for="productQuantity">Cantidad:</label>
+        <input type="number" id="productQuantity" required>
+
+        <label for="productPrice">Precio:</label>
+        <input type="number" id="productPrice" required>
+
+        <button type="submit">Guardar Producto</button>
+        <button type="button" onclick="toggleProductModal()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
