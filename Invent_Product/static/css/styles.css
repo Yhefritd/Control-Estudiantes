@@ -1,191 +1,338 @@
-/* General Styles */
+/* ===========================
+   ESTILOS GENERALES
+=========================== */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background: #f9fafb;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-  width: 80%;
+  width: 85%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Barra de Navegación */
+/* ===========================
+   BARRA DE NAVEGACIÓN
+=========================== */
 header {
-  background-color: #4CAF50;
+  background: linear-gradient(90deg, #00695c, #004d40);
   color: white;
-  padding: 30px 0;
+  padding: 50px 0;
   text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
-/* Sección de Búsqueda y Filtro */
+/* ===========================
+   SECCIÓN DE BÚSQUEDA Y FILTRO
+=========================== */
 #searchSection {
   display: flex;
   justify-content: center;
-  margin: 30px 0;
+  margin: 40px 0;
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+  background: white;
+  padding: 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+  position: relative;
 }
 
 #search {
-  padding: 10px;
-  width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  width: 320px;
+  transition: border-color 0.3s ease;
 }
 
+#search:focus {
+  border-color: #00796b;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 121, 107, 0.4);
+}
+
+/* Botones generales */
 button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
+  background: #00796b;
   color: white;
   border: none;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 121, 107, 0.3);
+  transition: background 0.3s ease, transform 0.15s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  background: #004d40;
+  transform: scale(1.05);
 }
 
-/* Categoría como texto clicable */
+/* Botón eliminar */
+.delete-btn {
+  background: #d32f2f;
+  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+}
+
+.delete-btn:hover {
+  background: #9a0007;
+}
+
+/* Botón editar */
+.edit-btn {
+  background: #0288d1;
+  box-shadow: 0 5px 15px rgba(2, 136, 209, 0.3);
+  margin-right: 10px;
+}
+
+.edit-btn:hover {
+  background: #01579b;
+}
+
+/* ===========================
+   CATEGORÍA
+=========================== */
 .category-text {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  color: #4CAF50;
-  font-weight: bold;
-  border: 1px solid #4CAF50;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  color: #00796b;
+  font-weight: 700;
+  border: 2px solid #00796b;
+  padding: 12px 25px;
+  border-radius: 15px;
+  transition: background 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
 
 .category-text:hover {
-  background-color: #45a049;
+  background: #00796b;
+  color: white;
 }
 
-/* Menú desplegable de Categorías */
+/* Menú desplegable */
 .category-dropdown {
   display: none;
   position: absolute;
-  top: 60px;
-  background-color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  background: white;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+  border-radius: 15px;
+  padding: 15px 0;
+  width: 200px;
+  z-index: 15;
 }
 
 .category-dropdown .dropdown-item {
-  padding: 10px;
-  background-color: white;
-  border: none;
-  width: 150px;
-  text-align: left;
+  padding: 15px 25px;
   cursor: pointer;
+  font-size: 1.1rem;
+  color: #444;
+  transition: background 0.2s ease;
+  user-select: none;
 }
 
 .category-dropdown .dropdown-item:hover {
-  background-color: #f4f4f4;
+  background: #f0f7f5;
 }
 
-/* Sección de Productos */
+/* ===========================
+   SECCIÓN DE PRODUCTOS
+=========================== */
 #productSection {
-  margin: 20px 0;
-}
-
-#productList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.product-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: 250px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  padding: 0 20px;
+  max-width: 1200px;
   text-align: center;
 }
 
+#productSection h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #004d40;
+  font-weight: 700;
+}
+
+/* ===========================
+   TARJETAS DE PRODUCTO CON FONDO
+=========================== */
+#productList {
+  position: relative;
+  background-image: url('fondo-gestioninventario.jpg'); /* Cambia esta ruta */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 20px;
+  padding: 40px 30px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Overlay para mantener legibilidad */
+#productList::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-card {
+  position: relative;
+  z-index: 2; /* Sobre el overlay */
+  background: white;
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 280px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+}
+
 .product-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #004d40;
+  font-weight: 700;
 }
 
 .product-card p {
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin: 6px 0;
+  color: #555;
+  line-height: 1.4;
 }
 
 .product-card button {
-  background-color: #ff5733;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+  align-self: flex-start;
+  padding: 10px 18px;
+  font-weight: 600;
+  margin-top: 15px;
+  border-radius: 12px;
 }
 
-.product-card button:hover {
-  background-color: #e64a19;
-}
-
-/* Modal para Añadir o Actualizar Producto */
+/* ===========================
+   MODAL
+=========================== */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(10, 10, 10, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  text-align: center;
+  background: white;
+  border-radius: 25px;
+  padding: 35px 40px;
+  width: 420px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  text-align: left;
 }
 
-.modal.hidden {
-  visibility: hidden;
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00796b;
+  margin-bottom: 25px;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+  font-size: 1rem;
 }
 
 .modal-content input {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  border: 1.8px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #00796b;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 121, 107, 0.4);
 }
 
 .modal-content button {
-  background-color: #4CAF50;
+  background: #00796b;
   color: white;
-  padding: 10px 20px;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 15px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
-  border-radius: 5px;
+  margin-right: 15px;
+  transition: background 0.3s ease;
 }
 
 .modal-content button:hover {
-  background-color: #45a049;
+  background: #004d40;
+}
+
+.modal-content button[type="button"] {
+  background: #ccc;
+  color: #333;
+}
+
+.modal-content button[type="button"]:hover {
+  background: #999;
 }
