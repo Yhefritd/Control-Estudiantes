@@ -1,6 +1,8 @@
-# views.py
-from django.shortcuts import render
+from django.contrib import admin
+from django.urls import path
+from Invent_Product import views 
 
-# Vista principal para la página de inicio
-def index(request):
-    return render(request, 'index.html')  # Renderiza la plantilla index.html
+urlpatterns = [
+    path('admin/', admin.site.urls),  # Agrega esta línea para habilitar el panel de administración
+    path('', views.index, name='index'),  # Definimos la ruta principal
+]
