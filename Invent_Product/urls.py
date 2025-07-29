@@ -1,8 +1,8 @@
-from django.contrib import admin
 from django.urls import path
-from Invent_Product import views 
+from Invent_Product import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # Agrega esta línea para habilitar el panel de administración
-    path('', views.index, name='index'),  # Definimos la ruta principal
+    path('', views.index, name='index'),
+    path('productos_categoria/', views.productos_por_categoria, name='productos_por_categoria'),
 ]
+
