@@ -28,45 +28,30 @@
   <!-- Sección de Búsqueda y Filtro -->
   <section id="searchSection">
     <div class="search-container">
-      <form method="get" action="/">
-        <input type="text" name="buscar" placeholder="Buscar producto..." value="{{ request.GET.buscar }}">
+      <form id="searchForm" autocomplete="off">
+        <input type="text" id="search" name="buscar" placeholder="Buscar producto..." autocomplete="off">
         <button type="submit">Buscar</button>
       </form>
 
 
-      <!-- Categoría como texto clicable -->
-      <div id="categoryText" class="category-text" onclick="toggleCategoryDropdown()">Categoría</div>
-
-      <!-- Menú de Categorías (Dropdown) -->
-      <select id="categoryDropdown" class="category-dropdown hidden" onchange="filterByCategory(this.value)">
-          <option value="" disabled selected>Selecciona una categoría</option>
-          {% for categoria in categorias %}
-              <option value="{{ categoria.nombre_categoria }}">{{ categoria.nombre_categoria }}</option>
-          {% endfor %}
+      <!-- Selector de Categoría -->
+      <select id="categoryDropdown" onchange="filterByCategory(this.value)" style="padding: 12px 25px; border-radius: 15px; border: 2px solid #00796b; font-size: 1.1rem; font-weight: 700; color: #00796b; margin-right: 20px;">
+        <option value="" selected>Ver todas las categorías</option>
+        {% for categoria in categorias %}
+          <option value="{{ categoria.nombre_categoria }}">{{ categoria.nombre_categoria }}</option>
+        {% endfor %}
       </select>
 
-
-      <!-- Botones adicionales -->
+      <!-- Botón para agregar producto -->
       <button class="btn" onclick="toggleProductModal()">Agregar Producto</button>
-      <button class="btn" onclick="editarProducto()">Editar Producto</button>
-      <button class="btn delete-btn" onclick="deleteSelectedProduct()">Eliminar Producto</button>
-
-      <!-- Menú de Categorías -->
-      <div id="categoryDropdown" class="category-dropdown hidden">
-        <div class="dropdown-item" onclick="filterByCategory('electronics')">Electrónica</div>
-        <div class="dropdown-item" onclick="filterByCategory('clothing')">Ropa</div>
-        <div class="dropdown-item" onclick="filterByCategory('food')">Alimentos</div>
-      </div>
     </div>
   </section>
 
+
+  <!-- Filtro de Categoría -->
   <!-- Sección de Productos -->
-  <section id="productSection">
-    <h2>Productos de la Categoría: <span id="currentCategory">Selecciona una categoría</span></h2>
-    <div id="productList">
-      <!-- Los productos serán renderizados aquí dinámicamente -->
-    </div>
-  </section>
+  <div id="productList"></div>
+
 
   <!-- Modal para Añadir o Actualizar Producto -->
   <div id="productModal" class="modal hidden">
@@ -80,13 +65,18 @@
         <input type="text" id="productCode" required>
 
         <label for="productCategory">Categoría:</label>
-        <input type="text" id="productCategory" value="" readonly>
+        <select id="productCategory" required style="width: 100%; padding: 14px 16px; margin-bottom: 20px; border-radius: 15px; border: 1.8px solid #ccc; font-size: 1rem; transition: border-color 0.3s ease;">
+          <option value="" disabled selected>Selecciona una categoría</option>
+          {% for categoria in categorias %}
+            <option value="{{ categoria.nombre_categoria }}">{{ categoria.nombre_categoria }}</option>
+          {% endfor %}
+        </select>
 
         <label for="productQuantity">Cantidad:</label>
         <input type="number" id="productQuantity" required>
 
         <label for="productPrice">Precio:</label>
-        <input type="number" id="productPrice" required>
+        <input type="number" id="productPrice" step="0.01" required>
 
         <button type="submit">Guardar Producto</button>
         <button type="button" onclick="toggleProductModal()">Cancelar</button>
