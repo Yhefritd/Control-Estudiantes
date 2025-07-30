@@ -9,6 +9,7 @@
 - **Jair Urbano** (Product Owner)  
 
 ---
+<img width="1881" height="850" alt="image" src="https://github.com/user-attachments/assets/b68ab2ba-2707-4144-a7b8-1fd1d3cb3156" />
 
 ## 📌 Descripción del Proyecto
 
